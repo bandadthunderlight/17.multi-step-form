@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./style.css">
+  <title>Frontend Mentor | Multi-step form</title>
+</head>
+
+<body onload="clearAllData() ">
+
+  <section class="form-section">
+
+    <div class="formStep-container">
+      <div class="formStep-item">
+        <div class="formStep-item-number activeStep" id="formStep1">1</div>
+        <div class="formStep-item-stepNameWrapper">
+          <div class="formStep-item-stepName">STEP 1</div>
+          <div class="formStep-item-title"> YOUR INFO</div>
+        </div>
+      </div>
+
+      <div class="formStep-item">
+        <div class="formStep-item-number" id="formStep2">2</div>
+        <div class="formStep-item-stepNameWrapper">
+          <div class="formStep-item-stepName">STEP 2</div>
+          <div class="formStep-item-title">SELECT PLAN</div>
+        </div>
+      </div>
+
+      <div class="formStep-item">
+        <div class="formStep-item-number" id="formStep3">3</div>
+        <div class="formStep-item-stepNameWrapper">
+          <div class="formStep-item-stepName">STEP 3</div>
+          <div class="formStep-item-title">ADD-ONS</div>
+        </div>
+      </div>
+
+      <div class="formStep-item">
+        <div class="formStep-item-number" id="formStep4">4</div>
+        <div class="formStep-item-stepNameWrapper">
+          <div class="formStep-item-stepName">STEP 4</div>
+          <div class="formStep-item-title">SUMMARY</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="formData-container">
+
+      <div class="formData-titleWrapper">
+        <div class="formData-title">Personal info</div>
+        <div class="formData-subTitle">Please provide your name, email address, and phone number.</div>
+      </div>
+
+      <div class="wholeDataWrapper">
+        <div class="formData-bodyWrapper wholeDataWrapper-item">
+          <div class="formData-inputWrapper">
+            <span class="input-label-alarm doNotDisplay">This field is required</span>
+            <label class="input-label" for="name-input">Name</label>
+            <input class="formData-input-item" type="text" placeholder="e.g. Stephen King" value="" id="name-input"
+              maxlength="20" required onkeyup="checkInputs(event)" />
+            <span class="input-label-alarm doNotDisplay">This field is required</span>
+            <label class="input-label" for="email-input">Email Address</label>
+            <input class="formData-input-item" type="email" placeholder="e.g. stephenking@lorem.com" value=""
+              id="email-input" maxlength="40" required onkeyup="checkInputs(event)" />
+            <span class="input-label-alarm doNotDisplay">This field is required</span>
+            <label class="input-label" for="phone-input">Phone Number</label>
+            <input class="formData-input-item" type="tel" placeholder="e.g. +1 234 567 890" value="" id="phone-input"
+              maxlength="13" required onkeyup="checkInputs(event)" />
+          </div>
+        </div>
+
+        <!-- ----------------------------------------------------- -->
+        <div class="formData-planWrapper wholeDataWrapper-item doNotDisplay">
+          <div class="formData-planCard activePlanCard" onclick="selectPlanHandler(event)" id="Arcade">
+            <div class="planCard-image">
+              <img class="planCard-image-img" src="./assets/images/icon-arcade.svg" />
+            </div>
+            <div class="planCard-text-wrapper">
+              <div class="planCard-title">Arcade</div>
+
+              <div class="planCard-text monthText">$9/mo</div>
+              <div class="planCard-text yearText doNotDisplay">$90/yr</div>
+              <div class="planCard-text offText doNotDisplay">2 months free</div>
+            </div>
+
+          </div>
+
+          <div class="formData-planCard" onclick="selectPlanHandler(event)" id="Advanced">
+            <div class="planCard-image">
+              <img class="planCard-image-img" src="./assets/images/icon-advanced.svg" />
+            </div>
+            <div class="planCard-text-wrapper">
+            <div class="planCard-title">Advanced</div>
+            <div class="planCard-text monthText">$12/mo</div>
+            <div class="planCard-text yearText doNotDisplay">$120/yr</div>
+            <div class="planCard-text offText doNotDisplay">2 months free</div>
+          </div>
+          </div>
+
+          <div class="formData-planCard" onclick="selectPlanHandler(event)" id="Pro">
+            <div class="planCard-image">
+              <img class="planCard-image-img" src="./assets/images/icon-pro.svg" />
+            </div>
+            <div class="planCard-text-wrapper">
+            <div class="planCard-title">Pro</div>
+            <div class="planCard-text monthText">$15/mo</div>
+            <div class="planCard-text yearText doNotDisplay">$150/yr</div>
+            <div class="planCard-text offText doNotDisplay">2 months free</div>
+          </div>
+          </div>
+        </div>
+        <div class="monthlyYearly-container wholeDataWrapper-item doNotDisplay">
+          <span id="monthSelect">Monthly</span>
+          <label class="switch">
+            <input id="monthYearSelec" type="checkbox" onchange="monthYearSelectHandler(event)">
+            <span class="slider round"></span>
+          </label>
+          <span id="yearSelect">Yearly</span>
+        </div>
+
+        <!-- ----------------------------------------------------- -->
+
+        <div class="formData-pickAddWrapper wholeDataWrapper-item doNotDisplay">
+
+          <div class="formData-pickAddItem">
+            <div class="pickAddItem-checkBox">
+              <input class="pickAddItemInput" type="checkbox" onchange="pickAddItemHandler(event)" id="onlineService" />
+            </div>
+            <div class="pickAddItem-text">
+              <div class="pickAddItem-title">Online service</div>
+              <div class="pickAddItem-sub">Access to multiplayer games</div>
+            </div>
+            <div class="pickAddItem-amount" id="addItem-onlineSrv-amount">+$1/mo</div>
+          </div>
+
+          <div class="formData-pickAddItem">
+            <div class="pickAddItem-checkBox">
+              <input class="pickAddItemInput" type="checkbox" onchange="pickAddItemHandler(event)" id="largerStorage" />
+            </div>
+            <div class="pickAddItem-text">
+              <div class="pickAddItem-title">Larger storage</div>
+              <div class="pickAddItem-sub">Extra 1TB of cloud save</div>
+            </div>
+            <div class="pickAddItem-amount" id="addItem-lrgerStr-amount">+$2/mo</div>
+          </div>
+
+          <div class="formData-pickAddItem">
+            <div class="pickAddItem-checkBox">
+              <input class="pickAddItemInput" type="checkbox" onchange="pickAddItemHandler(event)"
+                id="customizableProfile" />
+            </div>
+            <div class="pickAddItem-text">
+              <div class="pickAddItem-title">Customizable Profile</div>
+              <div class="pickAddItem-sub">Custom theme on your profile</div>
+            </div>
+            <div class="pickAddItem-amount" id="addItem-custmable-amount">+$1/mo</div>
+          </div>
+
+        </div>
+
+        <!-- ----------------------------------------------------- -->
+
+        <div class="formData-finishingWrapper wholeDataWrapper-item doNotDisplay">
+          <div class="finalStateWrapper">
+            <div class="formData-finishing-planState">
+              <span class="finalStatePlan">Arcade (Monthly)</span>
+              <span class="finalStatePlanCost">+$9/mo</span>
+            </div>
+            <hr class="seperator">
+            <div class="formData-finishing-addons">
+              <!-- <div class="finishing-addons-items">
+                <span>Online service</span>
+                <span>+$1/mo</span>
+              </div>
+              <div class="finishing-addons-items">
+                <span>Larger starage</span>
+                <span>+$2/mo</span>
+              </div> -->
+            </div>
+          </div>
+          <div class="totalFinalAmount">
+            <span class="totalFinalAmount-title">Total (per month)</span>
+            <span class="totalFinalAmount-number">+$12/mo</span>
+          </div>
+        </div>
+
+        <!-- ----------------------------------------------------- -->
+
+        <div class="final-notification doNotDisplay">
+          <div class="final-notification-icon">
+            <img src="./assets/images/icon-thank-you.svg" />
+          </div>
+          <div class="final-notification-title">Thank you!</div>
+          <div class="final-notification-text">Thanks for confirming your subscription! We hope you have fun
+            using our platform. If you ever need support, please feel free
+            to email us at support@loremgaming.com.</div>
+        </div>
+
+        <!-- ----------------------------------------------------- -->
+
+      </div>
+
+      <div class="formNavigator-container">
+        <button class="goBackBtn navigatorBtn" onclick="navigatorHandler(event)" id="backBtn">Go Back</button>
+        <button class="goNextBtn navigatorBtn" onclick="navigatorHandler(event)" id="nextBtn">Next Step</button>
+      </div>
+
+    </div>
+
+  </section>
+  <script src="./app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,762 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  /* ### Primary */
+  --Marine-blue: hsl(213, 96%, 18%);
+  --Purplish-blue: hsl(243, 100%, 62%);
+  --Pastel-blue: hsl(228, 100%, 84%);
+  --Light-blue: hsl(206, 94%, 87%);
+  --Strawberry-red: hsl(354, 84%, 57%);
+
+  /* ### Neutral */
+  --Cool-gray: hsl(231, 11%, 63%);
+  --Light-gray: hsl(229, 24%, 87%);
+  --Magnolia: hsl(217, 100%, 97%);
+  --Alabaster: hsl(231, 100%, 99%);
+  --White: hsl(0, 0%, 100%);
+}
+@font-face {
+  font-family: Ubuntu;
+  src: url(./fonts/Ubuntu-Regular.ttf);
+}
+@font-face {
+  font-family: Ubuntu-Medium;
+  src: url(./fonts/Ubuntu-Medium.ttf);
+}
+@font-face {
+  font-family: Ubuntu-Bold;
+  src: url(./fonts/Ubuntu-Bold.ttf);
+}
+body {
+  font-family: Ubuntu;
+  font-size: 16px;
+  font-weight: 400;
+  /* font-weight: 500,700; */
+  background-color: var(--Magnolia);
+}
+
+/* desktop view */
+@media only screen and (min-width: 650px) {
+  .form-section {
+    width: 65%;
+    height: 37.5rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--White);
+    margin: 6.5rem auto;
+  }
+
+  /* ---------formSteps-container----------------------------- */
+  .formStep-container {
+    background-image: url(./assets/images/bg-sidebar-desktop.svg);
+    background-size: cover;
+    width: 35%;
+    margin: 1rem;
+    padding: 3rem 2rem;
+    border-radius: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .formStep-item {
+    display: flex;
+    flex-direction: row;
+    color: var(--White);
+  }
+  .formStep-item-number {
+    border-radius: 50%;
+    border: 1px solid var(--White);
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    padding: 1rem;
+  }
+  .formStep-item-stepNameWrapper {
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .formStep-item-stepName {
+    font-size: small;
+    opacity: 50%;
+    align-self: flex-start;
+  }
+  .formStep-item-title {
+    font-family: Ubuntu-Bold;
+    font-weight: 900;
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
+  }
+  .activeStep {
+    background-color: var(--Light-blue);
+    color: var(--Marine-blue);
+    border-color: var(--Light-blue);
+  }
+
+  /* -------------formData-container----------------------------- */
+  .formData-container {
+    width: 65%;
+    height: 37.5rem;
+    margin: 0rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* gap: 2.7rem; */
+  }
+  .formData-titleWrapper {
+    margin-top: 1.2rem;
+  }
+  .formData-title {
+    font-family: Ubuntu-Bold;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--Marine-blue);
+    margin-left: 1rem;
+    margin-top: 2rem;
+  }
+  .formData-subTitle {
+    margin-left: 1rem;
+    margin-top: 0.6rem;
+    color: var(--Cool-gray);
+  }
+  .wholeDataWrapper {
+    justify-self: center;
+    margin-top: -3rem;
+  }
+  .formData-bodyWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+  }
+  .formData-inputWrapper {
+    display: flex;
+    flex-direction: column;
+    color: var(--Marine-blue);
+    font-size: small;
+  }
+  .formData-input-item {
+    box-shadow: none !important;
+    border: 1px solid var(--Cool-gray);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--Marine-blue);
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    padding: 0.9rem;
+    border-radius: 0.5rem;
+  }
+  .formData-input-item:invalid {
+    border-color: var(--Strawberry-red);
+  }
+  .input-label-alarm {
+    position: relative;
+    top: 1.2rem;
+    left: 73%;
+    color: var(--Strawberry-red);
+    font-weight: 700;
+  }
+  .formData-input-item:invalid ~ .input-label-alarm {
+    visibility: visible;
+  }
+  .formData-input-item:focus {
+    box-shadow: none !important;
+    border: 1px solid var(--Purplish-blue) !important;
+    outline: none;
+  }
+  .input-label {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+    font-size: medium;
+    font-weight: 500;
+  }
+
+  /* -------------formNavigator-container------------------------- */
+  .formNavigator-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-self: end;
+    position: relative;
+    bottom: 2rem;
+    left: 0rem;
+  }
+  .navigatorBtn {
+    font-family: Ubuntu;
+    border: none;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+  }
+  .navigatorBtn:hover {
+    cursor: pointer;
+    filter: contrast(1.5);
+  }
+  .goBackBtn {
+    background-color: rgba(240, 248, 255, 0);
+    color: var(--Cool-gray);
+    font-weight: 700;
+    font-size: 0.9rem;
+    visibility: hidden;
+  }
+  .goNextBtn {
+    background-color: var(--Marine-blue);
+    color: var(--White);
+    font-size: 0.9rem;
+  }
+
+  /* -------------plan-Wrapper---------------------------- */
+
+  .formData-planWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: -2.5rem;
+  }
+  .formData-planCard {
+    border: 1px solid var(--Light-gray);
+    padding: 1rem;
+    width: 30%;
+    border-radius: 0.5rem;
+  }
+  .activePlanCard {
+    background-color: var(--Magnolia);
+    border-color: var(--Purplish-blue);
+  }
+  .formData-planCard:hover {
+    border-color: var(--Purplish-blue);
+    cursor: pointer;
+  }
+  .planCard-image {
+    margin-bottom: 3rem;
+  }
+  .planCard-image-img {
+  }
+  .planCard-title {
+    font-family: Ubuntu-Bold;
+    color: var(--Marine-blue);
+  }
+  .planCard-text {
+    color: var(--Cool-gray);
+    font-size: small;
+    margin: 0.3rem 0;
+  }
+  .monthlyYearly-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Magnolia);
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--Marine-blue);
+    /* margin-bottom: 3.15rem; */
+  }
+  .offText {
+    color: var(--Marine-blue);
+    font-size: small;
+  }
+
+  /* -----------------------pickAddWrapper------------------------------------- */
+  .formData-pickAddWrapper {
+    /* margin-bottom: 3.4rem; */
+  }
+  .formData-pickAddItem {
+    border: solid 1px black;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border-color: var(--Purplish-blue);
+  }
+  .pickAddItem-checkBox {
+    width: 15%;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .pickAddItem-text {
+    width: 70%;
+  }
+  .pickAddItem-title {
+    color: var(--Marine-blue);
+    font-weight: 600;
+  }
+  .pickAddItem-sub {
+    color: var(--Cool-gray);
+  }
+  .pickAddItem-amount {
+    color: var(--Purplish-blue);
+    width: 20%;
+  }
+
+  /* -------------------------finalStateWrapper-------------------------- */
+  .finalStateWrapper {
+    background-color: var(--Magnolia);
+    border-radius: 10px;
+    padding: 1rem;
+    /* margin-bottom: 1.9rem; */
+  }
+  .formData-finishing-planState {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    color: var(--Marine-blue);
+    font-weight: 600;
+  }
+  .formData-finishing-addons {
+  }
+  .finishing-addons-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    color: var(--Cool-gray);
+  }
+  .totalFinalAmount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    color: var(--Cool-gray);
+  }
+  .totalFinalAmount-number {
+    color: var(--Purplish-blue);
+    font-size: large;
+    font-weight: 700;
+  }
+
+  /* -------------------------final-notification------------------------------ */
+  .final-notification {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .final-notification-title {
+    color: var(--Marine-blue);
+    font-family: Ubuntu-Bold;
+    font-size: xx-large;
+    margin: 2rem 0 1rem 0;
+  }
+  .final-notification-text {
+    text-align: center;
+    color: var(--Cool-gray);
+  }
+}
+
+/* mobile view */
+@media only screen and (max-width: 650px) {
+  .form-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--Magnolia);
+  }
+
+  /* ---------formSteps-container----------------------------- */
+  .formStep-container {
+    background-image: url(./assets/images/bg-sidebar-mobile.svg);
+    width: 100%;
+    height: 25vh;
+    margin: auto 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .formStep-item {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    color: var(--White);
+  }
+  .formStep-item-number {
+    border-radius: 50%;
+    border: 1px solid var(--White);
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    padding: 1rem;
+  }
+  .formStep-item-stepNameWrapper {
+    display: none;
+  }
+  .activeStep {
+    background-color: var(--Light-blue);
+    color: var(--Marine-blue);
+    border-color: var(--Light-blue);
+  }
+
+  /* -------------formData-container----------------------------- */
+  .formData-container {
+    height: 30rem;
+    margin: 0rem 1rem;
+    margin-top: -20%;
+    padding: 1.5rem;
+    background-color: var(--White);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .formData-titleWrapper {
+    margin-top: 0rem;
+  }
+  .formData-title {
+    font-family: Ubuntu-Bold;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--Marine-blue);
+    margin-top: 0.5rem;
+  }
+  .formData-subTitle {
+    margin-top: 0.6rem;
+    padding-bottom: 0.7rem;
+    padding-right: 1.5rem;
+    line-height: 1.5rem;
+    color: var(--Cool-gray);
+  }
+  .wholeDataWrapper {
+    justify-self: center;
+    margin-top: 10px;
+  }
+  .formData-bodyWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .formData-inputWrapper {
+    display: flex;
+    flex-direction: column;
+    color: var(--Marine-blue);
+  }
+  .formData-input-item {
+    box-shadow: none !important;
+    border: 1px solid var(--Cool-gray);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--Marine-blue);
+    margin-bottom: 0.5rem;
+    padding: 0.7rem;
+    border-radius: 5px;
+  }
+  .formData-input-item:invalid {
+    border-color: var(--Strawberry-red);
+  }
+  .input-label-alarm {
+    margin: 0;
+    padding: 0;
+    font-size: small;
+    position: relative;
+    top: 1rem;
+    left: 58%;
+    color: var(--Strawberry-red);
+    font-weight: 500;
+  }
+  .formData-input-item:invalid ~ .input-label-alarm {
+    visibility: visible;
+  }
+  .formData-input-item:focus {
+    box-shadow: none !important;
+    border: 1px solid var(--Purplish-blue) !important;
+    outline: none;
+  }
+  .input-label {
+    font-family: Ubuntu;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  /* -------------formNavigator-container------------------------- */
+  .formNavigator-container {
+    width: 100%;
+    background-color: var(--White);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-self: end;
+    position: absolute;
+    bottom: 0rem;
+    left: 0rem;
+  }
+  .navigatorBtn {
+    font-family: Ubuntu;
+    border: none;
+    text-align: center;
+    margin: 1rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 5px;
+  }
+  .navigatorBtn:hover {
+    cursor: pointer;
+    filter: contrast(1.5);
+  }
+  .goBackBtn {
+    background-color: rgba(240, 248, 255, 0);
+    color: var(--Cool-gray);
+    font-weight: 700;
+    font-size: 0.9rem;
+    visibility: hidden;
+  }
+  .goNextBtn {
+    background-color: var(--Marine-blue);
+    color: var(--White);
+    font-size: 0.9rem;
+  }
+
+  /* -------------plan-Wrapper---------------------------- */
+
+  .formData-planWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .formData-planCard {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    border: 1px solid var(--Light-gray);
+    padding: 1rem;
+    width: 100%;
+    height: 5rem;
+    border-radius: 0.5rem;
+  }
+  .activePlanCard {
+    background-color: var(--Magnolia);
+    border-color: var(--Purplish-blue);
+  }
+  .formData-planCard:hover {
+    border-color: var(--Purplish-blue);
+    cursor: pointer;
+  }
+  .planCard-image {
+    margin-right: 0.7rem;
+  }
+  .planCard-image-img {
+  }
+  .planCard-title {
+    font-family: Ubuntu-Bold;
+    color: var(--Marine-blue);
+    margin-bottom: 0.2rem;
+  }
+  .planCard-text-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .planCard-text {
+    color: var(--Cool-gray);
+    font-size: small;
+  }
+  .monthlyYearly-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Magnolia);
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--Marine-blue);
+    /* margin-bottom: 3.15rem; */
+  }
+  .offText {
+    color: var(--Marine-blue);
+    font-size: small;
+  }
+
+  /* -----------------------pickAddWrapper------------------------------------- */
+  .formData-pickAddWrapper {
+    font-size: small;
+    /* margin-bottom: 3.4rem; */
+  }
+  .formData-pickAddItem {
+    border: solid 1px black;
+    padding: 0.7rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border-color: var(--Purplish-blue);
+  }
+  .pickAddItem-checkBox {
+    width: 10%;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .pickAddItem-text {
+    width: 70%;
+  }
+  .pickAddItem-title {
+    color: var(--Marine-blue);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .pickAddItem-sub {
+    color: var(--Cool-gray);
+  }
+  .pickAddItem-amount {
+    color: var(--Purplish-blue);
+    width: 20%;
+  }
+
+  /* -------------------------finalStateWrapper-------------------------- */
+  .finalStateWrapper {
+    font-size: small;
+    background-color: var(--Magnolia);
+    border-radius: 10px;
+    padding: 1rem;
+    /* margin-bottom: 1.9rem; */
+  }
+  .formData-finishing-planState {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    color: var(--Marine-blue);
+    font-weight: 600;
+  }
+  .formData-finishing-addons {
+  }
+  .finishing-addons-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    color: var(--Cool-gray);
+  }
+  .totalFinalAmount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    color: var(--Cool-gray);
+  }
+  .totalFinalAmount-number {
+    color: var(--Purplish-blue);
+    font-size: large;
+    font-weight: 700;
+  }
+
+  /* -------------------------final-notification------------------------------ */
+  .final-notification {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .final-notification-title {
+    color: var(--Marine-blue);
+    font-family: Ubuntu-Bold;
+    font-size: xx-large;
+    margin: 2rem 0 1rem 0;
+  }
+  .final-notification-text {
+    text-align: center;
+    color: var(--Cool-gray);
+  }
+}
+
+/* ---------------------------other values---------------------------- */
+.doNotDisplay {
+  display: none;
+}
+.seperator {
+  color: var(--Light-gray);
+  opacity: 30%;
+}
+/* -------------------------rounded Switch---------------------------- */
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 20px;
+  margin: 0 1.5rem;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: -10px;
+  right: 0;
+  bottom: 0;
+  background-color: var(--Marine-blue);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 2px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--Marine-blue);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--Marine-blue);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+#yearSelect {
+  color: #808080;
+}
+#monthSelect {
+  margin-right: 1rem;
+}
